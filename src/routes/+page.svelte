@@ -1,2 +1,15 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script lang="ts">
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+
+	$: ({ Continents } = data);
+</script>
+
+<h2>Home</h2>
+
+This is the home page, with the list of continents
+
+{#each $Continents?.data?.continents ?? [] as { code, name }}
+	<div>{code} - {name}</div>
+{/each}
