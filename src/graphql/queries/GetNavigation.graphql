@@ -1,0 +1,22 @@
+query GetNavigation {
+	getHeaderMenu: menuItems(where: { location: HCMS_MENU_HEADER }, first: 99) {
+		nodes {
+			...menuFieldItems
+		}
+	}
+	getFooterMenu: menuItems(where: { location: HCMS_MENU_FOOTER }, first: 99) {
+		nodes {
+			...menuFieldItems
+		}
+	}
+	getLoggedInMenu: menuItems(where: { location: HCMS_MENU_LOGGEDIN }, first: 99) {
+		nodes {
+			...menuFieldItems
+		}
+	}
+	getLoggedOutMenu: menuItems(where: { location: HCMS_MENU_LOGGEDOUT }, first: 99) {
+		nodes {
+			...menuFieldItems
+		}
+	}
+}

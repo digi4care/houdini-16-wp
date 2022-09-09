@@ -1,0 +1,14 @@
+query GetAttributesJsonByPageUri($uri: String!) {
+	pageBy(uri: $uri) {
+		id
+		blocks {
+			attributesJSON
+			name
+			order
+		}
+		seo {
+			fullHead
+			title
+		}
+	}
+}
