@@ -1,9 +1,9 @@
-import WebsiteStore from '$houdini/stores/Website'
+import WebsiteStore from '$houdini/stores/Website';
 
-export function load({ event }) {
-	WebsiteStore.fetch({ event })
+export async function load({ event }) {
+	await WebsiteStore.fetch({ event });
 
 	return {
 		Website: WebsiteStore
-	}
+	};
 }
