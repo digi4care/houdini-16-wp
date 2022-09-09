@@ -1,0 +1,14 @@
+fragment menuFieldItems on MenuItem {
+	id
+	parentId
+	label
+	cssClasses
+	description
+	linkRelationship
+	order
+	path
+	target
+	title
+	uri
+	url
+}

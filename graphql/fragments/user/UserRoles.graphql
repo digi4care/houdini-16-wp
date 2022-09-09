@@ -1,0 +1,10 @@
+fragment UserRoles on User {
+	roles {
+		nodes {
+			displayName
+			id
+			isRestricted
+			name
+		}
+	}
+}

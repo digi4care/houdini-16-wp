@@ -1,0 +1,13 @@
+{
+	"input": {
+		"clientMutationId": "b6a15d4c-e47e-4e9c-8a9c-4d55b075324",
+		"username": "newton31",
+		"password": "aaa",
+		"email": "newton31@hyly.com",
+		"firstName": "New",
+		"lastName": "Ton",
+		"description": "new user1",
+		"locale": "site-default",
+		"roles": "editor"
+	}
+}

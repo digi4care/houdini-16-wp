@@ -1,0 +1,6 @@
+{
+  "input": {
+    "clientMutationId": "clientMutationId",
+    "jwtRefreshToken": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODg4OCIsImlhdCI6MTY1NzczODMxMiwibmJmIjoxNjU3NzM4MzEyLCJleHAiOjE2ODkyNzQzMTIsImRhdGEiOnsidXNlciI6eyJpZCI6IjEiLCJ1c2VyX3NlY3JldCI6ImdyYXBocWxfand0XzYyYzAzNGI2MWVjMTAifX19.2kYLwISHPWsJ7UGpjuhe93IPqVAyZ95cqqWj3mRwOFM"
+  }
+}

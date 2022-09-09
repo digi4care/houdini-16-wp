@@ -1,0 +1,44 @@
+mutation UpdateCustomer($input: UpdateCustomerInput!) {
+	updateCustomer(input: $input) {
+		clientMutationId
+		customer {
+			firstName
+			lastName
+			email
+			role
+			billing {
+				address1
+				address2
+				city
+				company
+				country
+				email
+				firstName
+				lastName
+				phone
+				postcode
+				state
+			}
+			shipping {
+				address1
+				address2
+				city
+				company
+				country
+				firstName
+				lastName
+				phone
+				postcode
+				state
+			}
+			totalSpent
+			orderCount
+			isVatExempt
+			isPayingCustomer
+			calculatedShipping
+			hasCalculatedShipping
+			date
+			modified
+		}
+	}
+}

@@ -1,0 +1,9 @@
+mutation RegisterCustomer($input: RegisterCustomerInput!) {
+	registerCustomer(input: $input) {
+		clientMutationId
+		customer {
+			jwtAuthToken
+			jwtRefreshToken
+		}
+	}
+}

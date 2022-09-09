@@ -1,0 +1,24 @@
+mutation LoginUser($input: LoginInput!) {
+	login(input: $input) {
+		authToken
+		refreshToken
+		clientMutationId
+		user {
+			id
+			databaseId
+			name
+			email
+			nicename
+			nickname
+			jwtAuthExpiration
+			roles {
+				nodes {
+					displayName
+					id
+					isRestricted
+					name
+				}
+			}
+		}
+	}
+}

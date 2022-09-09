@@ -1,0 +1,14 @@
+fragment UserDetails on LoginPayload {
+	user {
+		id
+		name
+		email
+		description
+		firstName
+		lastName
+		nicename
+		nickname
+		userId
+		...UserRoles
+	}
+}

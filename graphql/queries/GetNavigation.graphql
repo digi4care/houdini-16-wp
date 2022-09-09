@@ -1,0 +1,66 @@
+query GetNavigation {
+	getHeaderMenu: menuItems(where: { location: HCMS_MENU_HEADER }, first: 99) {
+		nodes {
+			id
+			parentId
+			label
+			cssClasses
+			description
+			linkRelationship
+			order
+			path
+			target
+			title
+			uri
+			url
+		}
+	}
+	getFooterMenu: menuItems(where: { location: HCMS_MENU_FOOTER }, first: 99) {
+		nodes {
+			id
+			parentId
+			label
+			cssClasses
+			description
+			linkRelationship
+			order
+			path
+			target
+			title
+			uri
+			url
+		}
+	}
+	getLoggedInMenu: menuItems(where: { location: HCMS_MENU_LOGGEDIN }, first: 99) {
+		nodes {
+			id
+			parentId
+			label
+			cssClasses
+			description
+			linkRelationship
+			order
+			path
+			target
+			title
+			uri
+			url
+		}
+	}
+	getLoggedOutMenu: menuItems(where: { location: HCMS_MENU_LOGGEDOUT }, first: 99) {
+		nodes {
+			id
+			parentId
+			label
+			cssClasses
+			description
+			linkRelationship
+			order
+			path
+			target
+			title
+			uri
+			url
+		}
+	}
+}

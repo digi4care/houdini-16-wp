@@ -1,0 +1,25 @@
+query Settings {
+	general: generalSettings {
+		description
+		language
+		title
+		url
+	}
+	reading: readingSettings {
+		showOnFront
+		postsPerPage
+		pageOnFront
+		pageForPosts
+	}
+	header: getHeader {
+		favicon
+		siteLogoUrl
+		siteTagLine
+		siteTitle
+	}
+	footer: getFooter {
+		copyrightText
+		sidebarOne
+		sidebarTwo
+	}
+}

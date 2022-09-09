@@ -1,0 +1,14 @@
+{
+	"input": {
+		"id": 50,
+		"clientMutationId": "b6a15d4c-e47e-4e9c-8a9c-4d55b075324",
+		"password": "wordpres1s@hyly.com",
+		"email": "wordpress12@hyly.com",
+		"description": "Whoopsie",
+		"firstName": "Chris",
+		"lastName": "Engelhard",
+		"locale": "site-default",
+		"websiteUrl": "",
+		"roles": ""
+	}
+}

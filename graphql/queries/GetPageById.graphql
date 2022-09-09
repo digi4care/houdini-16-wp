@@ -1,0 +1,12 @@
+query GetPageById($pageId: Int!) {
+	pageBy(pageId: $pageId) {
+		id
+		seo {
+			title
+			canonical
+			fullHead
+		}
+		isFrontPage
+		content
+	}
+}
