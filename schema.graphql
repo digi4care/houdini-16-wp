@@ -276,6 +276,37 @@ type AddToCartPayload {
   clientMutationId: String
 }
 
+"""Input for the addToWishlist mutation"""
+input AddToWishlistInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """Product id"""
+  productId: Int
+}
+
+"""The payload for the addToWishlist mutation"""
+type AddToWishlistPayload {
+  """True if the product is removed, false otherwise"""
+  added: Boolean
+
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """Description of the error"""
+  error: String
+
+  """The Product id that was added"""
+  productId: Int
+
+  """The Product ids in the wishlist"""
+  wishlistProductIds: [Int]
+}
+
 """Coupon applied to the shopping cart."""
 type AppliedCoupon {
   """Coupon code"""
@@ -20375,6 +20406,9 @@ type ExternalProduct implements ContentNode & DatabaseIdentifier & Node & NodeWi
     where: ProductToProductCategoryConnectionWhereArgs
   ): ProductToProductCategoryConnection
 
+  """Product Currency"""
+  productCurrency: String
+
   """Connection between the Product type and the productTag type"""
   productTags(
     """
@@ -22302,6 +22336,9 @@ type GroupProduct implements ContentNode & DatabaseIdentifier & Node & NodeWithC
     where: ProductToProductCategoryConnectionWhereArgs
   ): ProductToProductCategoryConnection
 
+  """Product Currency"""
+  productCurrency: String
+
   """Connection between the Product type and the productTag type"""
   productTags(
     """
@@ -22741,6 +22778,45 @@ type GroupProduct_Acfblockstaff implements AcfFieldGroup {
 
   """"""
   title: String
+}
+
+"""Header Type"""
+type HCMSFooter {
+  """Copyright text"""
+  copyrightText: String
+
+  """sidebarOne"""
+  sidebarOne: String
+
+  """sidebarTwo"""
+  sidebarTwo: String
+
+  """Social links"""
+  socialLinks: [HCMSSocialLinks]
+}
+
+"""Header Type"""
+type HCMSHeader {
+  """favicon"""
+  favicon: String
+
+  """Site logo URL"""
+  siteLogoUrl: String
+
+  """Site tagline"""
+  siteTagLine: String
+
+  """Site title"""
+  siteTitle: String
+}
+
+"""Social Links Type"""
+type HCMSSocialLinks {
+  """Icon name"""
+  iconName: String
+
+  """Icon url"""
+  iconUrl: String
 }
 
 """"""
@@ -23580,6 +23656,9 @@ enum MediaItemSizeEnum {
   """MediaItem with the medium_large size"""
   MEDIUM_LARGE
 
+  """MediaItem with the post-thumbnail size"""
+  POST_THUMBNAIL
+
   """MediaItem with the thumbnail size"""
   THUMBNAIL
 
@@ -23973,6 +24052,12 @@ type MenuItemToMenuItemLinkableConnectionEdge {
 
 """Registered menu locations"""
 enum MenuLocationEnum {
+  """Put the menu in the hcms-menu-footer location"""
+  HCMS_MENU_FOOTER
+
+  """Put the menu in the hcms-menu-header location"""
+  HCMS_MENU_HEADER
+
   """Put the menu in the hcms-menu-loggedin location"""
   HCMS_MENU_LOGGEDIN
 
@@ -52188,6 +52273,9 @@ type Page implements BlockEditorContentNode & ContentNode & DatabaseIdentifier &
   """Gutenberg blocks as json string"""
   blocksJSON: String
 
+  """bodyClasses"""
+  bodyClasses: String
+
   """
   Connection between the HierarchicalContentNode type and the ContentNode type
   """
@@ -52855,6 +52943,9 @@ type Post implements BlockEditorContentNode & ContentNode & DatabaseIdentifier &
   """Gutenberg blocks as json string"""
   blocksJSON: String
 
+  """bodyClasses"""
+  bodyClasses: String
+
   """Connection between the post type and the category type"""
   categories(
     """
@@ -52876,6 +52967,9 @@ type Post implements BlockEditorContentNode & ContentNode & DatabaseIdentifier &
     """Arguments for filtering the connection"""
     where: PostToCategoryConnectionWhereArgs
   ): PostToCategoryConnection
+
+  """Co Authors"""
+  coAuthors: String
 
   """
   The number of comments. Even though WPGraphQL denotes this field as an integer, in WordPress this field should be saved as a numeric string for compatibility.
@@ -54675,6 +54769,9 @@ type PostTypeSEO {
   """"""
   schema: SEOPostTypeSchema
 
+  """Yoast SEO Schema"""
+  schemaDetails: String
+
   """"""
   title: String
 
@@ -55942,6 +56039,9 @@ interface Product {
     """Arguments for filtering the connection"""
     where: ProductToProductCategoryConnectionWhereArgs
   ): ProductToProductCategoryConnection
+
+  """Product Currency"""
+  productCurrency: String
 
   """Connection between the Product type and the productTag type"""
   productTags(
@@ -64775,6 +64875,37 @@ type RemoveCouponsPayload {
   clientMutationId: String
 }
 
+"""Input for the removeFromWishlist mutation"""
+input RemoveFromWishlistInput {
+  """
+  This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """Product id"""
+  productId: Int
+}
+
+"""The payload for the removeFromWishlist mutation"""
+type RemoveFromWishlistPayload {
+  """
+  If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions.
+  """
+  clientMutationId: String
+
+  """Description of the error"""
+  error: String
+
+  """The Product id that was deleted"""
+  productId: Int
+
+  """True if the product is removed, false otherwise"""
+  removed: Boolean
+
+  """The Product ids in the wishlist"""
+  wishlistProductIds: [Int]
+}
+
 """Input for the removeItemsFromCart mutation"""
 input RemoveItemsFromCartInput {
   """Remove all cart items"""
@@ -65251,6 +65382,12 @@ type RootMutation {
     """Input for the addToCart mutation"""
     input: AddToCartInput!
   ): AddToCartPayload
+
+  """The payload for the addToWishlist mutation"""
+  addToWishlist(
+    """Input for the addToWishlist mutation"""
+    input: AddToWishlistInput!
+  ): AddToWishlistPayload
 
   """The payload for the applyCoupon mutation"""
   applyCoupon(
@@ -66067,6 +66204,12 @@ type RootMutation {
     """Input for the removeCoupons mutation"""
     input: RemoveCouponsInput!
   ): RemoveCouponsPayload
+
+  """The payload for the removeFromWishlist mutation"""
+  removeFromWishlist(
+    """Input for the removeFromWishlist mutation"""
+    input: RemoveFromWishlistInput!
+  ): RemoveFromWishlistPayload
 
   """The payload for the removeItemsFromCart mutation"""
   removeItemsFromCart(
@@ -67826,6 +67969,15 @@ type RootQuery {
   """Fields of the &#039;GeneralSettings&#039; settings group"""
   generalSettings: GeneralSettings
 
+  """Get footer"""
+  getFooter: HCMSFooter
+
+  """Get header"""
+  getHeader: HCMSHeader
+
+  """States"""
+  getWishList: WishlistProducts
+
   """A simple product object"""
   groupedProduct(
     """The ID for identifying the GroupProduct product"""
@@ -68902,6 +69054,9 @@ type RootQuery {
     where: RootQueryToShippingClassConnectionWhereArgs
   ): RootQueryToShippingClassConnection
 
+  """Shipping Zones"""
+  shippingInfo: ShippingInfo
+
   """A shipping method object"""
   shippingMethod(
     """The ID for identifying the shipping method"""
@@ -69190,6 +69345,12 @@ type RootQuery {
     """Arguments for filtering the connection"""
     where: RootQueryToVisibleProductConnectionWhereArgs
   ): RootQueryToVisibleProductConnection
+
+  """Countries"""
+  wooCountries: WooCountries
+
+  """States"""
+  wooStates(countryCode: String): WooStates
 
   """Fields of the &#039;WritingSettings&#039; settings group"""
   writingSettings: WritingSettings
@@ -75226,6 +75387,9 @@ input RootQueryToPostConnectionWhereArgs {
   """Paginate Posts with offsets"""
   offsetPagination: OffsetPagination
 
+  """The ID of the post object to filter by"""
+  onlySticky: Boolean
+
   """What paramater to use to order the objects by."""
   orderby: [PostObjectsConnectionOrderbyInput]
 
@@ -77371,6 +77535,15 @@ type ShippingClassToTaxonomyConnectionEdge {
   node: Taxonomy
 }
 
+"""Shipping Zones Type"""
+type ShippingInfo {
+  """"""
+  shippingZones: String
+
+  """"""
+  storePostCode: Int
+}
+
 """a shipping line object"""
 type ShippingLine {
   """The ID of the order item in the database"""
@@ -78888,6 +79061,9 @@ type SimpleProduct implements ContentNode & DatabaseIdentifier & Node & NodeWith
     """Arguments for filtering the connection"""
     where: ProductToProductCategoryConnectionWhereArgs
   ): ProductToProductCategoryConnection
+
+  """Product Currency"""
+  productCurrency: String
 
   """Connection between the Product type and the productTag type"""
   productTags(
@@ -85772,6 +85948,9 @@ type VariableProduct implements ContentNode & DatabaseIdentifier & Node & NodeWi
     where: ProductToProductCategoryConnectionWhereArgs
   ): ProductToProductCategoryConnection
 
+  """Product Currency"""
+  productCurrency: String
+
   """Connection between the Product type and the productTag type"""
   productTags(
     """
@@ -86681,6 +86860,96 @@ type WPPageInfo {
 
   """When paginating backwards, the cursor to continue."""
   startCursor: String
+}
+
+""""""
+type WishlistProduct {
+  """"""
+  buttonText: String
+
+  """"""
+  databaseId: Int
+
+  """"""
+  image: WishlistProductImage
+
+  """"""
+  name: String
+
+  """"""
+  priceHtml: String
+
+  """"""
+  productUrl: String
+
+  """"""
+  slug: String
+
+  """"""
+  stockQuantity: Int
+
+  """"""
+  stockStatus: String
+
+  """"""
+  typename: String
+}
+
+""""""
+type WishlistProductImage {
+  """"""
+  alt: String
+
+  """"""
+  attachmentId: Int
+
+  """"""
+  src: String
+}
+
+"""States Type"""
+type WishlistProducts {
+  """"""
+  error: String
+
+  """"""
+  productIds: [Int]
+
+  """"""
+  products: [WishlistProduct]
+}
+
+"""Countries Type"""
+type WooCountries {
+  """"""
+  billingCountries: [WooCountry]
+
+  """"""
+  shippingCountries: [WooCountry]
+}
+
+""""""
+type WooCountry {
+  """"""
+  countryCode: String
+
+  """"""
+  countryName: String
+}
+
+""""""
+type WooState {
+  """"""
+  stateCode: String
+
+  """"""
+  stateName: String
+}
+
+"""States Type"""
+type WooStates {
+  """"""
+  states: [WooState]
 }
 
 """woocommerce/active-filters block"""
