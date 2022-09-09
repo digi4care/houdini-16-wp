@@ -1,5 +1,6 @@
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
+import path from 'path';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -7,14 +8,23 @@ const config = {
 	// for more information about preprocessors
 	preprocess: [
 		preprocess({
-			postcss: true
+			postcss: true,
+			preserve: ['ld+json']
 		})
 	],
 
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$houdini: './$houdini'
+			'~': path.resolve('./src'),
+			$houdini: path.resolve('./$houdini'),
+			$lib: path.resolve('./src/lib'),
+			'~foundation': path.resolve('./src/foundation')
+		},
+		trailingSlash: 'always',
+		version: {
+			name: Date.now().toString(),
+			pollInterval: 0
 		}
 	}
 };

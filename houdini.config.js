@@ -1,7 +1,7 @@
 /** @type {import('houdini').ConfigFile} */
 const config = {
     "client": "./src/client",
-    "apiUrl": "https://countries.trevorblades.com/graphql"
+    "apiUrl": 'http://localhost:8888/graphql'
 }
 
 export default config

@@ -1,7 +1,9 @@
 import { HoudiniClient, type RequestHandlerArgs } from '$houdini';
 
+import _config from '$lib/config';
+
 async function fetchQuery({ fetch, text = '', variables = {}, metadata }: RequestHandlerArgs) {
-	const url = 'https://countries.trevorblades.com/graphql';
+	const url = _config.apiUrl;
 	const result = await fetch(url, {
 		method: 'POST',
 		headers: {
