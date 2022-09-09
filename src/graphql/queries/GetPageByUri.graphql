@@ -1,0 +1,12 @@
+query GetPageByUri($uri: String!) {
+	pageByUri: pageBy(uri: $uri) {
+		id
+		seo {
+			title
+			canonical
+			fullHead
+		}
+		isFrontPage
+		content
+	}
+}
