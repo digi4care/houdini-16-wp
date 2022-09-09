@@ -1,13 +1,16 @@
 <script lang="ts">
 	import '../app.postcss';
 	import client from '../client';
+	import type { PageData } from './$types';
 
 	client.init();
 
-	export let data;
+	export let data: PageData;
 	$: ({ Website } = data);
 
-	$: console.log($Website);
+	import Layout from '~foundation/sections/Layout.svelte';
 </script>
 
-<slot />
+<Layout pageData={$Website.data}>
+	<slot />
+</Layout>
