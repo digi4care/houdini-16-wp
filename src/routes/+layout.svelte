@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '../app.postcss';
 	import client from '../client';
 
 	client.init();
